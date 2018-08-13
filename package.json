@@ -1,0 +1,22 @@
+{
+  "name": "quora-automation",
+  "version": "1.0.0",
+  "description": "Automate creating question and getting all answers",
+  "main": "js/index.js",
+  "scripts": {
+    "start": "node js/index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "quora",
+    "puppeteer"
+  ],
+  "author": "peter@grainger.xyz",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^1.7.0"
+  },
+  "devDependencies": {
+    "@types/puppeteer": "^1.6.0"
+  }
+}
