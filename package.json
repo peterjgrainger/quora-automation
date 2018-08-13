@@ -1,8 +1,9 @@
 {
   "name": "quora-automation",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "Automate creating question and getting all answers",
   "main": "js/index.js",
+  "typings": "js/index.d.ts",
   "scripts": {
     "start": "node js/index.js",
     "test": "jest"

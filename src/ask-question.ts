@@ -1,13 +1,14 @@
 import {launch} from 'puppeteer';
-import { config } from './config';
+import { launchConfig } from './config';
+import { UserConfig } from './user-config';
 
-export async function addQuestion(question: string, username: string, password: string) {
-    const browser = await launch(config.launchConfig);
+export async function addQuestion(question: string, userConfig: UserConfig) {
+    const browser = await launch(launchConfig(userConfig.deploymentType));
     const page = await browser.newPage();
-    await page.goto(config.quora_url);
+    await page.goto('https://www.quora.com');
     try {
-        await page.type('input[tabindex="1"][name="email"]', config.username || username);
-        await page.type('input[tabindex="2"][name="password"]', config.password || password);
+        await page.type('input[tabindex="1"][name="email"]', userConfig.username);
+        await page.type('input[tabindex="2"][name="password"]', userConfig.password);
         await page.keyboard.press('Tab')
         await page.keyboard.press('Enter')
         await page.waitForNavigation()

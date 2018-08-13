@@ -1,7 +1,2 @@
-import { addQuestion } from './ask-question';
-import { findQuestion } from './find-question';
-
-export default class QuoraAutomation {
-  findQuestion
-  addQuestion
-}
+export * from './find-question';
+export * from './ask-question'

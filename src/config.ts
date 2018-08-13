@@ -1,28 +1,12 @@
-const dev = {
+import { DEPLOYMENT_TYPES } from "./deployment-types";
 
-    launchConfig: undefined
-
-}
-
-const production = {
-
-    launchConfig: {
+const dockerConfig = {
             executablePath: '/usr/bin/chromium-browser',
             args: ['--disable-dev-shm-usage', '--no-sandbox', '--headless', '--disable-gpu']    
-    }
 
 }
 
-const common = {
-    username: process.env.QUORA_USERNAME,
-    password: process.env.QUORA_PASSWORD,
-    quora_url: 'https://www.quora.com'
+export function launchConfig(deploymentType: DEPLOYMENT_TYPES) {
+    return deploymentType === DEPLOYMENT_TYPES.DOCKER ? dockerConfig : undefined
 }
-
-const lookup = {
-    dev,
-    production
-}
-
-export const config = Object.assign(common, lookup[process.env.NODE_ENV || 'dev'])
 

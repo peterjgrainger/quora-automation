@@ -1,14 +1,15 @@
 import { launch } from "puppeteer";
-import { config } from './config';
+import { launchConfig } from './config';
+import { UserConfig } from "./user-config";
 
-export async function findQuestion(question:string) {
+export async function findQuestion(question:string, userConfig: UserConfig) {
 
-    const browser = await launch(config.launchConfig);
+    const browser = await launch(launchConfig(userConfig.deploymentType));
     const page = await browser.newPage();
 
     const sanitisedQuestion = question.replace(/[^a-zA-Z0-9\s]/g, '')
                                       .replace(/\s/g, '-')
-    await page.goto(`${config.quora_url}/${sanitisedQuestion}`)
+    await page.goto(`https://www.quora.com/${sanitisedQuestion}`)
 
     const url = page.url()
     let firstAnswer = 'No answer found yet, try again later'
