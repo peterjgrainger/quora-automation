@@ -1,10 +1,10 @@
 import { launch } from "puppeteer";
 import { launchConfig } from './config';
-import { UserConfig } from "./user-config";
+import { DEPLOYMENT_TYPES } from "./deployment-types";
 
-export async function findQuestion(question:string, userConfig: UserConfig) {
+export async function findQuestion(question:string, deploymentType?: DEPLOYMENT_TYPES) {
 
-    const browser = await launch(launchConfig(userConfig.deploymentType));
+    const browser = await launch(launchConfig(deploymentType));
     const page = await browser.newPage();
 
     const sanitisedQuestion = question.replace(/[^a-zA-Z0-9\s]/g, '')

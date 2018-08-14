@@ -16,14 +16,32 @@ export async function addQuestion(question: string, userConfig: UserConfig) {
         await page.click('a.LookupBarAskQuestionModalButton')
         await page.waitForSelector(`textarea[placeholder='Start your question with "What", "How", "Why", etc.']`)
         await page.type(`textarea[placeholder='Start your question with "What", "How", "Why", etc.']`, question)
+        const existsBefore = !!(await page.$('div.QuestionAddFailed'));
+        console.log('exists before', existsBefore);
         await page.click('a[id$="submit"]')
-        await page.waitForSelector('div.AskToAnswerHeader')
-        await page.click('span.modal_close')
-        await page.waitFor(1000)
-        return Promise.resolve('Successfully added question')
+
+        try {
+          await page.waitForSelector('div.QuestionAddFailed', {
+            visible: true,
+            timeout: 2000
+          })
+
+          const answer = await page.evaluate(() => document.querySelector('div.QuestionAddFailed').textContent)
+
+          await browser.close()
+          return Promise.resolve(answer.replace('✕', ''))
+        } catch(error) {
+          await page.waitForSelector('div.AskToAnswerHeader')
+          await page.click('span.modal_close')
+          await browser.close()
+          return Promise.resolve('Successfully added question')
+        }
+        
+        
       } catch(error) {
         console.error(error);
+        await browser.close()
         return Promise.reject(error.message || 'Something went wrong')
-      }
+      } 
 }
 
