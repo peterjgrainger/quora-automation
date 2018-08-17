@@ -31,6 +31,9 @@ export async function addQuestion(question: string, userConfig: UserConfig) {
           await browser.close()
           return Promise.resolve(answer.replace('✕', ''))
         } catch(error) {
+          console.log('error', error)
+          await page.screenshot({path: 'uhoh.png'})
+
           await page.waitForSelector('div.AskToAnswerHeader')
           await page.click('span.modal_close')
           await browser.close()

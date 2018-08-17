@@ -11,7 +11,7 @@ describe('add a question', ()=> {
     }, 50000)
 
     it('duplicate', async()=> {
-        const result = await addQuestion('Does donald trump lie?', {
+        const result = await addQuestion('is donald trump evil?', {
             username: '',
             password: ''
         })

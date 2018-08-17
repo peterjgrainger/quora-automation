@@ -4,3 +4,4 @@ src
 Dockerfile
 *.png
 tsconfig.json
+*.test.ts
