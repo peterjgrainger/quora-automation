@@ -5,6 +5,8 @@ import { UserConfig } from './user-config';
 export async function addQuestion(question: string, userConfig: UserConfig) {
     const browser = await launch(launchConfig(userConfig.deploymentType));
     const page = await browser.newPage();
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36')
+
     await page.goto('https://www.quora.com');
     try {
         await page.type('input[tabindex="1"][name="email"]', userConfig.username);

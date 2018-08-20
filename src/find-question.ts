@@ -5,8 +5,8 @@ import { DEPLOYMENT_TYPES } from "./deployment-types";
 export async function findQuestion(question:string, deploymentType?: DEPLOYMENT_TYPES) {
 
     const browser = await launch(launchConfig(deploymentType));
-    const page = await browser.newPage();
 
+    const page = await browser.newPage();
     const sanitisedQuestion = question.replace(/[^a-zA-Z0-9\s]/g, '')
                                       .replace(/\s/g, '-')
     await page.goto(`https://www.quora.com/${sanitisedQuestion}`)

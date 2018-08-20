@@ -6,7 +6,11 @@ const dockerConfig = {
 
 }
 
+const localConfig = {
+     args: ['--no-sandbox', '--disable-setuid-sandbox'] 
+}
+
 export function launchConfig(deploymentType: DEPLOYMENT_TYPES) {
-    return deploymentType === DEPLOYMENT_TYPES.DOCKER ? dockerConfig : undefined
+    return deploymentType === DEPLOYMENT_TYPES.DOCKER ? dockerConfig : localConfig
 }
 
