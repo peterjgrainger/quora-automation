@@ -1,13 +1,13 @@
 {
   "name": "quora-automation",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "Automate creating question and getting all answers",
   "main": "js/index.js",
   "typings": "js/index.d.ts",
   "scripts": {
     "start": "node js/index.js",
     "test": "jest",
-    "prepublish": "tsc && npm version minor && git add . && git commit -m 'minor fix'"
+    "prepublish": "tsc"
   },
   "keywords": [
     "quora",
