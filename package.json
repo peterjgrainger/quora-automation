@@ -1,6 +1,6 @@
 {
   "name": "quora-automation",
-  "version": "1.0.18",
+  "version": "1.0.21",
   "description": "Automate creating question and getting all answers",
   "main": "js/index.js",
   "typings": "js/index.d.ts",
@@ -16,6 +16,7 @@
   "author": "peter@grainger.xyz",
   "license": "MIT",
   "dependencies": {
+    "imgur": "^0.2.1",
     "puppeteer": "^1.7.0"
   },
   "devDependencies": {

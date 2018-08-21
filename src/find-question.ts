@@ -3,7 +3,6 @@ import { launchConfig } from './config';
 import { DEPLOYMENT_TYPES } from "./deployment-types";
 
 export async function findQuestion(question:string, deploymentType?: DEPLOYMENT_TYPES) {
-
     const browser = await launch(launchConfig(deploymentType));
 
     const page = await browser.newPage();
